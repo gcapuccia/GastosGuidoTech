@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabaseClient'
 import BotonGasto from '@/components/BotonGasto'
+import BotonAnalisis from '@/components/BotonAnalisis'
 
 // Navbar responsivo que muestra el nombre de la app, el email
 // del usuario, un botón de logout (a la izquierda del email)
@@ -159,6 +160,8 @@ export default function WelcomeDashboard({ expenses }: any) {
               compact
               className="ml-2 p-2 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200"
             />
+
+            <BotonAnalisis className="ml-2 p-2 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 "/>
 
             {/* Toggle de modo oscuro */}
             <button

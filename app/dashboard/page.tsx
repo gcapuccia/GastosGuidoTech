@@ -6,13 +6,21 @@
   import DashboardCards from '@/components/DashboardCards'
   import WelcomeDashboard from '@/components/welcomedashboard'
   import BotonGasto from '@/components/BotonGasto'
-  import { useState } from 'react'
+  import { useEffect, useState } from 'react'
+  import { useRouter } from 'next/navigation'
+  import { supabase } from '@/lib/supabaseClient'
+
+
 
   // Página principal del dashboard con layout centrado y max-width
   export default function Dashboard() {
     const [month, setMonth] = useState(new Date().getMonth() + 1)
     const [year, setYear] = useState(new Date().getFullYear())
     const { expenses, createExpense } = useExpenses(month, year)
+    const [loading, setLoading] = useState(true)
+    const router = useRouter()
+
+
 
     return (
       <div className="min-h-screen bg-slate-50 py-10">

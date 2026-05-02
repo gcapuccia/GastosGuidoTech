@@ -50,3 +50,29 @@ Esta aplicación permite a freelancers llevar un control claro de sus finanzas:
 
 ## 📂 Estructura del proyecto
 
+
+
+### 🔹 Descripción
+
+- **app/** → páginas y routing (Next.js)
+- **components/** → UI (cards, forms, listas, gráficos)
+- **hooks/** → lógica de negocio (estado, controladores)
+- **services/** → acceso a datos (Supabase)
+- **lib/** → configuración y utilidades
+
+---
+
+## ⚙️ Instalación y uso
+
+### 1. Clonar el repo
+- git clone https://github.com/tu-usuario/tu-repo.git
+- cd tu-repo
+- npm install
+
+###Configurar variables de entorno si vas a usarlo en local
+- Crear archivo .env.local:
+NEXT_PUBLIC_SUPABASE_URL=tu_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=tu_key
+### Ejecutar el proyecto:
+npm run dev
+

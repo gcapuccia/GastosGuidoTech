@@ -28,21 +28,8 @@ export default function Analytics() {
 
       {/* Filtros */}
       <div className="flex gap-2 mb-6">
-        <input
-          type="number"
-          value={month}
-          onChange={(e) => setMonth(Number(e.target.value))}
-          min="1"
-          max="12"
-          className="border p-2 w-20 rounded"
-        />
-
-        <input
-          type="number"
-          value={year}
-          onChange={(e) => setYear(Number(e.target.value))}
-          className="border p-2 w-24 rounded"
-        />
+        <input type="number" value={month} onChange={(e) => setMonth(Number(e.target.value))} min="1" max="12" className="border p-2 w-20 rounded"/>
+        <input type="number" value={year} onChange={(e) => setYear(Number(e.target.value))} className="border p-2 w-24 rounded"/>
       </div>
 
       {/* Gráfico */}

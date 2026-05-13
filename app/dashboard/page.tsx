@@ -16,7 +16,7 @@
   export default function Dashboard() {
     const [month, setMonth] = useState(new Date().getMonth() + 1)
     const [year, setYear] = useState(new Date().getFullYear())
-    const { expenses, createExpense } = useExpenses(month, year)
+    const { expenses, createExpense, deleteExpense } = useExpenses(month, year)
     const [loading, setLoading] = useState(true)
     const router = useRouter()
 
@@ -43,7 +43,7 @@
             <div className="md:col-span-1">
               <div className="bg-white rounded-2xl shadow-md p-6">
                 <h2 className="text-lg font-semibold mb-4">Movimientos</h2>
-                <ExpenseList expenses={expenses} />
+                <ExpenseList expenses={expenses} onDelete={deleteExpense} />
               </div>
             </div>
           </div>

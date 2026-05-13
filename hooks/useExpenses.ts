@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getExpensesByMonth, addExpense } from '@/services/expenseService'
+import { getExpensesByMonth, addExpense, destroyExpense } from '@/services/expenseService'
 import { supabase } from '@/lib/supabaseClient'
 import { useRouter } from 'next/navigation'
 
@@ -20,6 +20,7 @@ export const useExpenses = (month: number, year: number) => {
     }
   }
 
+  //que hace esta función createExpense? crea un nuevo gasto y luego vuelve a cargar la lista de gastos para mostrar el nuevo gasto agregado.
   const createExpense = async (expense: any) => {
     try {
       const { data: userData } = await supabase.auth.getUser()
@@ -35,6 +36,17 @@ export const useExpenses = (month: number, year: number) => {
     }
   }
 
+  const deleteExpense = async (id: string) => {
+    try {
+
+      await destroyExpense(id)
+      await fetchExpenses(month, year)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+
     useEffect(() => {
       
       const checkUser = async () => {
@@ -48,8 +60,9 @@ export const useExpenses = (month: number, year: number) => {
     }
     checkUser()
 
-      fetchExpenses(month, year)
-                }, [month, year])
+
+    fetchExpenses(month, year)
+               }, [month, year])
       console.log('fetch con:', month, year)
-      return { expenses, loading, createExpense, }
+      return { expenses, loading, createExpense, deleteExpense }
           }

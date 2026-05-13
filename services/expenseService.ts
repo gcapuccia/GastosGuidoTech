@@ -35,3 +35,13 @@ export const addExpense = async (expense: any) => {
 
   if (error) throw error
 }
+
+//TODO: SOLUCIONAR ELIMIAR UN REGISTRO
+// Otras funciones como deleteExpense
+export const destroyExpense = async (id: string) => {
+  console.log('BORRANDO:', id)
+  const { error } = await supabase.from('expenses').delete().eq('id', id)
+
+
+  if (error) throw error
+}

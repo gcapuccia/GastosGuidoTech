@@ -81,10 +81,10 @@ export default function LoginCard() {
   }
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-8 mx-4">
+    <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-lg dark:shadow-none dark:ring-1 dark:ring-slate-800 p-8 mx-4">
       {/* Título */}
-      <h1 className="text-2xl font-bold text-[#0f172a]">Bienvenido de nuevo</h1>
-      <p className="text-sm text-slate-500 mt-1">Gestioná tus finanzas como freelancer</p>
+      <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100">Bienvenido de nuevo</h1>
+      <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">Gestioná tus finanzas como freelancer</p>
 
       {/* Formulario */}
       <form onSubmit={handleLogin} className="mt-6 space-y-4">
@@ -103,7 +103,7 @@ export default function LoginCard() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="email@ejemplo.com"
-            className="w-full pl-10 border border-slate-200 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-[#22c55e]"
+            className="w-full pl-10 border border-slate-200 rounded-lg p-3 bg-white text-slate-900 placeholder:text-slate-400 transition focus:outline-none focus:ring-2 focus:ring-emerald-500/60 focus:border-emerald-500 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-500"
           />
         </div>
 
@@ -121,13 +121,13 @@ export default function LoginCard() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Contraseña"
-            className="w-full pl-10 border border-slate-200 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-[#22c55e]"
+            className="w-full pl-10 border border-slate-200 rounded-lg p-3 bg-white text-slate-900 placeholder:text-slate-400 transition focus:outline-none focus:ring-2 focus:ring-emerald-500/60 focus:border-emerald-500 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-500"
           />
         </div>
 
         {/* Mensajes de error / éxito */}
-        {error && <div className="text-sm text-red-500">{error}</div>}
-        {message && <div className="text-sm text-[#065f46]">{message}</div>}
+        {error && <div className="text-sm text-red-600 dark:text-red-400">{error}</div>}
+        {message && <div className="text-sm text-emerald-700 dark:text-emerald-400">{message}</div>}
 
         {/* Botón principal */}
         <button
@@ -150,7 +150,7 @@ export default function LoginCard() {
             type="button"
             onClick={handleRegister}
             disabled={loading}
-            className="text-sm text-slate-700 underline"
+            className="text-sm text-slate-700 dark:text-slate-300 underline hover:text-emerald-600 dark:hover:text-emerald-400 transition"
           >
             ¿No tenés cuenta? Registrate
           </button>
@@ -158,7 +158,7 @@ export default function LoginCard() {
       </form>
 
       {/* Footer / ayuda */}
-      <div className="mt-6 text-xs text-slate-400">Usamos Supabase Auth para gestionar tu cuenta.</div>
+      <div className="mt-6 text-xs text-slate-400 dark:text-slate-500">Usamos Supabase Auth para gestionar tu cuenta.</div>
     </div>
   )
 }

@@ -23,12 +23,11 @@
 
 
     return (
-      <div className="min-h-screen bg-slate-50 py-10">
-        <main className="max-w-5xl mx-auto px-6 space-y-8">
-        {/* Componente que muestra bienvenida y logout */}
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-950 transition-colors">
         <WelcomeDashboard expenses={expenses} />
+        <main className="max-w-5xl mx-auto px-6 py-10 space-y-8">
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
-            <div className="w-full md:w-3/3">
+            <div className="w-full">
               {/* Tarjetas resumen + filtros */}
               <DashboardCards expenses={expenses} />
             </div>
@@ -41,8 +40,8 @@
             </div>
 
             <div className="md:col-span-1">
-              <div className="bg-white rounded-2xl shadow-md p-6">
-                <h2 className="text-lg font-semibold mb-4">Movimientos</h2>
+              <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-md dark:shadow-none dark:ring-1 dark:ring-slate-800 p-6">
+                <h2 className="text-lg font-semibold mb-4 text-slate-900 dark:text-slate-100">Movimientos</h2>
                 <ExpenseList expenses={expenses} onDelete={deleteExpense} />
               </div>
             </div>

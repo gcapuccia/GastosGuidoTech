@@ -1,8 +1,18 @@
 @import "tailwindcss";
 
+/* Tailwind v4: hacer que la variante dark: responda a la clase .dark
+   (por defecto v4 usa prefers-color-scheme). Esto es lo que activa el
+   modo oscuro al togglear `document.documentElement.classList.add('dark')`. */
+@custom-variant dark (&:is(.dark *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8fafc; /* slate-50 */
+  --foreground: #0f172a; /* slate-900 */
+}
+
+.dark {
+  --background: #020617; /* slate-950 */
+  --foreground: #e2e8f0; /* slate-200 */
 }
 
 @theme inline {
@@ -12,15 +22,18 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Transición suave al alternar tema (motion = estado, no decoración) */
+:root,
+.dark {
+  color-scheme: light;
+}
+.dark {
+  color-scheme: dark;
 }

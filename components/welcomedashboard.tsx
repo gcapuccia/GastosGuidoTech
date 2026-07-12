@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabaseClient'
 import BotonGasto from '@/components/BotonGasto'
 import BotonAnalisis from '@/components/BotonAnalisis'
+import BotonResumen from '@/components/BotonResumen'
 
 // Navbar responsivo que muestra el nombre de la app, el email
 // del usuario, un botón de logout (a la izquierda del email)
@@ -163,6 +164,8 @@ export default function WelcomeDashboard({ expenses }: any) {
 
             <BotonAnalisis className="ml-2 p-2 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 "/>
 
+            <BotonResumen className="ml-2 p-2 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200" />
+
             {/* Toggle de modo oscuro */}
             <button
               onClick={toggleDark}
@@ -222,6 +225,8 @@ export default function WelcomeDashboard({ expenses }: any) {
               expenses={expenses}
               className="w-full justify-start px-3 py-2 rounded-md text-sm bg-slate-100 dark:bg-slate-800"
             />
+
+            <BotonResumen className="w-full justify-start px-3 py-2 rounded-md text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200" />
 
             <div className="px-3 py-2 text-sm text-slate-800 dark:text-slate-200">{user?.email ?? 'Invitado'}</div>
 

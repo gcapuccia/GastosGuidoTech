@@ -1,6 +1,7 @@
 import { supabase } from '@/lib/supabaseClient'
 
-/* export const getExpenses = async () => {
+// Trae todos los movimientos del usuario (sin filtro de mes), para el resumen histórico
+export const getAllExpenses = async () => {
   const { data, error } = await supabase
     .from('expenses')
     .select('*')
@@ -8,7 +9,7 @@ import { supabase } from '@/lib/supabaseClient'
 
   if (error) throw error
   return data
-} */
+}
 
   export const getExpensesByMonth = async (month: number, year: number) => {
   const start = new Date(Date.UTC(year, month - 1, 1))

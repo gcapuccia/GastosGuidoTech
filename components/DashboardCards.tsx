@@ -1,31 +1,19 @@
 "use client"
 
-import { useMemo, useState } from 'react'
-
 // Componente: DashboardCards
 // Muestra tres tarjetas con Ingresos, Gastos y Ahorro.
 // Incluye filtros por mes/año (select) y es responsivo.
-export default function DashboardCards({ expenses = [] }: any) {
-  const [month, setMonth] = useState<number>(new Date().getMonth() + 1)
-  const [year, setYear] = useState<number>(new Date().getFullYear())
-
+// El mes/año viene del padre (dashboard), que es quien consulta a Supabase.
+export default function DashboardCards({ expenses = [], month, year, onMonthChange, onYearChange }: any) {
   // Formateador de moneda para consistencia visual (con decimales)
   const fmt = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 2, maximumFractionDigits: 2 })
 
-  // Filtrar gastos por mes/año seleccionados
-  const filtered = useMemo(() => {
-    return expenses.filter((e: any) => {
-      if (!e.created_at) return true
-      const d = new Date(e.created_at)
-      return d.getMonth() + 1 === month && d.getFullYear() === year
-    })
-  }, [expenses, month, year])
-
-  const totalIncome = filtered
+  // Los gastos ya vienen filtrados por mes/año desde el servidor
+  const totalIncome = expenses
     .filter((e: any) => e.type === 'income')
     .reduce((acc: number, e: any) => acc + e.amount, 0)
 
-  const totalExpenses = filtered
+  const totalExpenses = expenses
     .filter((e: any) => e.type === 'expense')
     .reduce((acc: number, e: any) => acc + e.amount, 0)
 
@@ -95,7 +83,7 @@ export default function DashboardCards({ expenses = [] }: any) {
           <div className="flex gap-2">
             <select
               value={month}
-              onChange={(e) => setMonth(Number(e.target.value))}
+              onChange={(e) => onMonthChange(Number(e.target.value))}
               className="w-1/2 rounded-lg border border-slate-200 bg-white p-2 text-sm text-slate-900 transition focus:outline-none focus:ring-2 focus:ring-emerald-500/60 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
               aria-label="Mes"
             >
@@ -106,7 +94,7 @@ export default function DashboardCards({ expenses = [] }: any) {
 
             <select
               value={year}
-              onChange={(e) => setYear(Number(e.target.value))}
+              onChange={(e) => onYearChange(Number(e.target.value))}
               className="w-1/2 rounded-lg border border-slate-200 bg-white p-2 text-sm text-slate-900 transition focus:outline-none focus:ring-2 focus:ring-emerald-500/60 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
               aria-label="Año"
             >

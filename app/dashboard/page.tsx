@@ -29,7 +29,13 @@
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
             <div className="w-full">
               {/* Tarjetas resumen + filtros */}
-              <DashboardCards expenses={expenses} />
+              <DashboardCards
+                expenses={expenses}
+                month={month}
+                year={year}
+                onMonthChange={setMonth}
+                onYearChange={setYear}
+              />
             </div>
           </div>
 
